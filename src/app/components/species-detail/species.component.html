@@ -1,0 +1,38 @@
+<div class="container margin-bottom-3">
+    <sdx-button 
+    theme="secondary" 
+    label="back" 
+    (click)="goBack()" 
+    id="btn"
+    ></sdx-button>
+</div>
+<div 
+class="container bg-cloud padding-3" 
+*ngIf="starWarSpecies$ | async as starWarSpecies"
+>
+    <sdx-card 
+    label-aria-level="3" 
+    class="col padding-3 margin-right-3"
+    [label]=starWarSpecies.name 
+    >
+        <ul class="list single-line margin-0">
+            <li>
+                gender : {{starWarSpecies.gender }}
+            </li>
+            <li>
+                birth year : {{starWarSpecies.birth_year }}
+            </li>
+            <br>
+            <h5>Home : </h5>
+            <li>
+                home name : {{starWarSpecies.home_name }}
+            </li>
+            <li>
+                population : {{starWarSpecies.population | population }}
+            </li>
+            <li>
+                rotation period : {{starWarSpecies.rotation_period }}
+            </li>
+        </ul>
+    </sdx-card>
+</div>

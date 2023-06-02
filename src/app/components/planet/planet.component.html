@@ -1,0 +1,46 @@
+<div class="container bg-cloud padding-3">
+    <sdx-card 
+    *ngIf="hasError" 
+    layout="notification" 
+    notification-type="alert" 
+    icon-name="icon-exclamation-mark-circle"
+    label="Error" 
+    label-aria-level="3" 
+    class="col padding-3 margin-right-3"
+    >
+        {{errorMessage}}
+    </sdx-card>
+    <div 
+    *ngIf="!hasError && !isLoading" 
+    class="card-container row margin-3--clear"
+    >
+        <div 
+        *ngFor="let planet of planets$ | async" 
+        class="card col-xs-12 col-md-4 col-lg-3 margin-bottom-3"
+        >
+            <sdx-card 
+            [label]=planet.name 
+            label-aria-level="3" 
+            background="grey" 
+            href-aria-label="Open new website."
+            >
+                <p>id : {{planet.id}}</p>
+                <p>population : {{planet.population | population }}</p>
+            </sdx-card>
+        </div>
+    </div>
+    <div class="spinner">
+        <sdx-loading-spinner 
+        *ngIf="isFetchingMore" 
+        size="large" 
+        sr-hint="Loading. Please wait."
+        ></sdx-loading-spinner>
+    </div>
+    <sdx-show-more 
+    *ngIf="!hasError && !isLoading" 
+    increment-by="20" 
+    [totalItems]=totalCount 
+    from-label="of"
+    more-label="Show 20 more" (click)="getMorePlanets()"
+    ></sdx-show-more>
+</div>

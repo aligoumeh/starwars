@@ -1,0 +1,51 @@
+@keyframes hoverAnimation {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff, 0 0 15px #1e90ff, 0 0 20px #1e90ff;
+    }
+    50% {
+      box-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff, 0 0 50px #1e90ff;
+    }
+    100% {
+      box-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff, 0 0 15px #1e90ff, 0 0 20px #1e90ff;
+    }
+  }
+  
+  .card {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #1e90ff, 0 0 20px #1e90ff;
+    margin: 1rem;
+    padding: 0;
+  }
+  
+  .card:hover {
+    border: 2px solid #1e90ff;
+    box-shadow: 0 0 5px #1e90ff, 0 0 10px #1e90ff, 0 0 15px #1e90ff, 0 0 20px #1e90ff;
+    animation: glow 2s infinite;
+    cursor: url('/assets/sw-cursor.png')!important;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+  }
+  .card::before {
+    content: "";
+    position:relative;
+  }

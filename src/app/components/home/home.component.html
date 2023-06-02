@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row flex-items-xs-middle" id="tabs">
+        <div>
+            <sdx-tabs sr-hint="Tabs with text.">
+                <sdx-tabs-item 
+                label="people" 
+                [selected]="activeTab === 'people'"
+                (sdxselect)="changeTab('people')"
+                >
+                </sdx-tabs-item>
+                <sdx-tabs-item 
+                label="planets" 
+                [selected]="activeTab === 'planets'"
+                (sdxselect)="changeTab('planets')"
+                >
+                </sdx-tabs-item>
+            </sdx-tabs>
+        </div>
+    </div>
+    <div class="margin-bottom-3">
+        <sdx-search 
+        placeholder="Search on names..." 
+        sr-hint="Type your search term" 
+        sr-hint-for-button="Search"
+        (input)="onSearch($event)" 
+        *ngIf="!isDetailPage"
+        >
+        </sdx-search>
+    </div>
+</div>
+
+<router-outlet 
+*ngIf="!isNavigating"
+>
+</router-outlet>
+
+<div class="spinner">
+    <sdx-loading-spinner 
+    *ngIf="isNavigating" 
+    size="large" 
+    sr-hint="Loading. Please wait."
+    >
+    </sdx-loading-spinner>
+</div>
